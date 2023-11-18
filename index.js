@@ -1,0 +1,15 @@
+const express = require('express')
+const app = express()
+const path = require('path')
+const line = require('@line/bot-sdk')
+const PORT = process.env.PORT || 5000
+
+express()
+  .use(express.static(path.join(__dirname, 'public')))
+  .set('views', path.join(__dirname, 'views'))
+  .set('view engin', 'ejs')
+  .get('/',(req, res) => res.render('index'))
+  .get('/g/',(req, res) => res.json({method:"こんにちはgetさん"}))
+  .post('/p/', (req, res) => res.json({method:"こんにちはpostさん"}))
+  .post('/hook/', (req, res) => res.json({ test: "hook"}))
+  .listen(PORT, () => console.log('Listening on ${ PORT }'))
