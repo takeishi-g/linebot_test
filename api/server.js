@@ -17,32 +17,32 @@ const app = express()
 
 app.get('/api/', (req, res) => res.send('Hello LINE BOT!'))
 
-app.post('/webhook', line.middleware(config), (req, res) => {
-  Promise
-    .all(req.body.events.map(handleEvent))
-    .then((result) => res.json(result))
-    .catch((err) => {
-      console.error(err)
-      res.status(500).end()
-    })
-})
+// app.post('/webhook', line.middleware(config), (req, res) => {
+//   Promise
+//     .all(req.body.events.map(handleEvent))
+//     .then((result) => res.json(result))
+//     .catch((err) => {
+//       console.error(err)
+//       res.status(500).end()
+//     })
+// })
 
 
-async function handleEvent(event) {
-  console.log(event)
-  if (event.type !== 'message' || event.message.type !== 'text') {
-    return Promise.resolve(null)
-  }
+// async function handleEvent(event) {
+//   console.log(event)
+//   if (event.type !== 'message' || event.message.type !== 'text') {
+//     return Promise.resolve(null)
+//   }
 
-  const echo = { type: 'text', text: event.message.text }
+//   const echo = { type: 'text', text: event.message.text }
 
-  return client.replyMessage({
-    replyToken: event.replyToken,
-    messages: [echo]
-  })
-}
+//   return client.replyMessage({
+//     replyToken: event.replyToken,
+//     messages: [echo]
+//   })
+// }
 
-// app.listen(PORT, () => console.log(`Server ruuning at ${PORT}`))
+app.listen(PORT, () => console.log(`Server ruuning at ${PORT}`))
 
-(process.env.NOW_REGION) ? module.exports = app : app.listen(PORT)
-console.log(`Serveruuning at ${PORT}`)
+// (process.env.NOW_REGION) ? module.exports = app : app.listen(PORT)
+// console.log(`Serveruuning at ${PORT}`)
