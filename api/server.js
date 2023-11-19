@@ -15,7 +15,7 @@ const client = new line.messagingApi.MessagingApiClient({
 
 const app = express()
 
-app.get('/', (req, res) => res.send('Hello LINE BOT!'))
+app.get('/api/', (req, res) => res.send('Hello LINE BOT!'))
 
 app.post('/webhook', line.middleware(config), (req, res) => {
   Promise
