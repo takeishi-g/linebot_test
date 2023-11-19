@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "route": [
+    { "src": "/", "dest": "api/server.js" },
+    { "src": "/webhook", "dest": "api/server.js" }
+  ]
+}
